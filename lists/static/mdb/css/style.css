@@ -1,0 +1,9 @@
+/**
+* My Custom CSS
+* Just try!
+**/
+
+#id_list_table {
+    list-style: none;
+    text-align: left;
+}

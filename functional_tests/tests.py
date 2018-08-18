@@ -1,4 +1,4 @@
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
@@ -6,7 +6,7 @@ import time
 
 MAX_WAIT = 10
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -19,7 +19,7 @@ class NewVisitorTest(LiveServerTestCase):
         while True:
             try:
                 table = self.browser.find_element_by_id('id_list_table')
-                rows = self.browser.find_elements_by_tag_name('tr')
+                rows = self.browser.find_elements_by_tag_name('li')
                 self.assertIn(row_text, [row.text for row in rows])
 
                 return
@@ -45,8 +45,8 @@ class NewVisitorTest(LiveServerTestCase):
         # centered there too
         inputbox.send_keys('Testing')
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_row_list_table('1: Testing')
-        inputbox = self.find_element_by_id('id_new_item')
+        self.wait_for_row_in_list_table('1: Testing')
+        inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertAlmostEqual(
                             inputbox.location['x'] + inputbox.size['width'] / 2,
                             512,
@@ -87,7 +87,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # The page updates again, and now shows both items on her list
         table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
+        rows = table.find_elements_by_tag_name('li')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
 
