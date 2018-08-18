@@ -7,3 +7,11 @@
     list-style: none;
     text-align: left;
 }
+
+#id_new_item, .add_item_btn {
+    width: 85%;
+}
+
+.to-do-list-card {
+    width: 55%;
+}

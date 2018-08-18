@@ -22,3 +22,4 @@ webpack-stats.json
 db.sqlite3
 package-lock.json
 geckodriver.log
+/static
