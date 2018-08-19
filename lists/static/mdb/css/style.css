@@ -8,6 +8,11 @@
     text-align: left;
 }
 
+#id_list_table>li {
+    padding: 10px 0;
+    border-bottom: 2px solid #e3e3e3;
+}
+
 #id_new_item, .add_item_btn {
     width: 85%;
 }
