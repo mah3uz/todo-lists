@@ -9,7 +9,7 @@ EnvironmentFile=/home/mahfuz/tddbook/DOMAIN/.env
 
 ExecStart=/home/mahfuz/tddbook/DOMAIN/virtualenv/bin/gunicorn \
     --bind unix:/tmp/DOMAIN.socket \
-    superlists.wsgi:application
+    superlist.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
