@@ -37,6 +37,11 @@
                         <div class="md-form mt-3">
                             <input type="text" name="item_text" id="id_new_item" placeholder="Enter a to-do item">
                         </div>
+                        {% if error %}
+                            <div class="form-group has-error">
+                                <span class="alert alert-warning">{{ error }}</span>
+                            </div>
+                        {% endif %}
                         <button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Add Item</button>
                         <script>mixpanel.track("Todo Item Created");</script>
                     </form>
